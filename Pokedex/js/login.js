@@ -22,7 +22,15 @@ function login(){
             user_password: pass
         }
     }).then(function(res){
-        console.log(res);
+        console.log(res.data);
+        if(res.data.code==200){
+            alert("inicio exitoso");
+            localStorage.setItem("token",res.data.message);
+            window.location.href="pokedex.html";
+        }
+        else{
+            alert("Usuario y/o contrasena no encontrado");
+        }
     }).catch(function(err){
         console.log(err);
     })
